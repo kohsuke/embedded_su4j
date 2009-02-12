@@ -3,7 +3,7 @@
   <groupId>com.sun.solaris</groupId>
   <artifactId>embedded_su4j</artifactId>
   <packaging>jar</packaging>
-  <version>1.1-SNAPSHOT</version>
+  <version>1.1</version>
   <name>embedded_su for Java</name>
 
   <scm>
