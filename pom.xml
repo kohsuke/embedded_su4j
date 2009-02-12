@@ -77,6 +77,16 @@
     </repository>
   </repositories>
 
+  <profiles>
+    <profile>
+      <id>release</id>
+      <properties>
+        <!-- so that I can release from Linux -->
+        <maven.test.skip.exec>true</maven.test.skip.exec>
+      </properties>
+    </profile>
+  </profiles>
+
   <licenses>
     <license>
       <name>MIT license</name>
