@@ -48,7 +48,7 @@ public class EmbeddedSu {
         // now the command line massage is ready. start a process
         Process proc = pb.start();
 
-        PrintWriter out = new PrintWriter(proc.getOutputStream());
+        PrintWriter out = new PrintWriter(proc.getOutputStream(),true);
         InputStream in = proc.getInputStream();
         // send initialization block
         LOGGER.fine("Initiating embedded_su conversation");
