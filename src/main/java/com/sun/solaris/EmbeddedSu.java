@@ -108,7 +108,7 @@ public class EmbeddedSu {
             }
             if(line.startsWith("ERROR")) {
                 LOGGER.fine("Authentication faied: "+line);
-                throw new SuAuthenticationFailureException(readTextBlock(in)+'\n'+join(errorMessages));
+                throw new SuAuthenticationFailureException(readTextBlock(in)+join(errorMessages));
             }
 
             LOGGER.fine("Unrecognized response: "+line);
