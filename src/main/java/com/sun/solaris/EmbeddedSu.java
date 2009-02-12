@@ -16,6 +16,12 @@ import java.util.logging.Logger;
  */
 public class EmbeddedSu {
     /**
+     * Not meant to be instantiated.
+     */
+    private EmbeddedSu() {
+    }
+
+    /**
      * Launches a process as configured by {@link ProcessBuilder}, but under
      * a separate user priviledge by using <tt>su</tt> functionality.
      *
