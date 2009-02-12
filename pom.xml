@@ -7,13 +7,6 @@
   <version>1.0-SNAPSHOT</version>
   <name>embedded_su for Java</name>
 
-  <repositories>
-    <repository>
-      <id>don-asf-repository</id>
-      <url>http://people.apache.org/~mrdon/repository/</url>
-    </repository>
-  </repositories>
-  
   <scm>
     <connection>scm:git:git://github.com/kohsuke/embedded_su4j.git</connection>
   </scm>
@@ -77,6 +70,10 @@
     <repository>
       <id>m.g.o-public</id>
       <url>http://maven.glassfish.org/content/groups/public/</url>
+    </repository>
+    <repository>
+      <id>don-asf-repository</id>
+      <url>http://people.apache.org/~mrdon/repository/</url>
     </repository>
   </repositories>
 
