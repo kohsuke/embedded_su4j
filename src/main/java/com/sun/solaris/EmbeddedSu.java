@@ -7,6 +7,8 @@ import java.io.InputStream;
 import java.io.PrintWriter;
 import java.util.Arrays;
 import java.util.List;
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.logging.Logger;
 
 /**
@@ -54,6 +56,25 @@ public class EmbeddedSu {
         LOGGER.fine("Initiating embedded_su conversation");
         out.println(".");
 
+        /*
+            embedded_su often sends us PAM_ERROR_MSG that's useful, so capture them.
+                alice@opensolaris:~$ /usr/lib/embedded_su root
+                .
+                CONV 1
+                PAM_PROMPT_ECHO_OFF
+                Password:
+                .
+                root
+                CONV 1
+                PAM_ERROR_MSG
+                Roles can only be assumed by authorized users
+                .
+                ERROR
+                embedded_su: Sorry
+                .
+         */
+        List<String> errorMessages = new ArrayList<String>();
+
         while(true) {
             String line = readLine(in);
             if(line.startsWith("CONV")) {
@@ -74,6 +95,9 @@ public class EmbeddedSu {
                         // embedded_su expects some value but this is probably not where we want to send the password
                         out.println();
                     }
+                    if(header.startsWith("PAM_ERROR_MSG")) {
+                        errorMessages.add(textBlock);
+                    }
                     // ignore the rest
                 }
                 continue;
@@ -84,12 +108,19 @@ public class EmbeddedSu {
             }
             if(line.startsWith("ERROR")) {
                 LOGGER.fine("Authentication faied: "+line);
-                throw new SuAuthenticationFailureException(readTextBlock(in));
+                throw new SuAuthenticationFailureException(readTextBlock(in)+'\n'+join(errorMessages));
             }
 
             LOGGER.fine("Unrecognized response: "+line);
             throw new IOException("Unrecognized response from embedded_su "+line);
         }
+    }
+
+    private static String join(Collection<String> col) {
+        StringBuilder buf = new StringBuilder();
+        for (String a : col)
+            buf.append(a);
+        return buf.toString();
     }
 
     /**
