@@ -7,13 +7,6 @@
   <version>1.0-SNAPSHOT</version>
   <name>embedded_su for Java</name>
 
-  <distributionManagement>
-    <repository>
-      <id>java.net-m2-repository</id>
-      <url>java-net:/maven2-repository/trunk/www/repository/</url>
-    </repository>
-  </distributionManagement>
- 
   <repositories>
     <repository>
       <id>don-asf-repository</id>
