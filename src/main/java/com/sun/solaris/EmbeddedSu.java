@@ -33,6 +33,9 @@ public class EmbeddedSu {
      *      The password of the user.
      */
     public static Process startWithSu(String user, String pwd, ProcessBuilder pb) throws IOException {
+        if (user==null || pwd==null)
+            throw new IllegalArgumentException();
+        
         // su only invokes a shell, so the argument has to be packed into the -c option
         StringBuilder buf = new StringBuilder("exec ");
         for( String cmd : pb.command() ) {
