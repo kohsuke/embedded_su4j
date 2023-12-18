@@ -68,11 +68,11 @@
   <repositories>
     <repository>
       <id>m.g.o-public</id>
-      <url>http://maven.glassfish.org/content/groups/public/</url>
+      <url>https://maven.glassfish.org/content/groups/public/</url>
     </repository>
     <repository>
       <id>don-asf-repository</id>
-      <url>http://people.apache.org/~mrdon/repository/</url>
+      <url>https://people.apache.org/~mrdon/repository/</url>
     </repository>
   </repositories>
 
